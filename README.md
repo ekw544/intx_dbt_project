@@ -25,6 +25,7 @@ For privacy reasons, all data in this repository is **simulated**. The real data
 
 ## 📁 Project Structure
 
+```
 intx_project/
 │
 ├── data/
@@ -40,7 +41,7 @@ intx_project/
 │
 ├── .gitignore
 └── README.md # ← You are here
-
+```
 
 ---
 
@@ -51,20 +52,25 @@ intx_project/
    ```bash
    conda create -n dbt_env python=3.12
    conda activate dbt_env
-
+    ```
 2. **Install dbt with SQLite adapter and helpers**
+    ```
     pip install dbt-core dbt-sqlite faker pandas
-
+    ```
 3. **Verify installation**
+    ```
     python --version
     dbt --version
+    ```
+---
 
-🧩 Local Database
-* The local SQLite database (e.g. intx.db) should remain local and never be committed.
-* Your profiles.yml (in ~/.dbt/profiles.yml) should reference the absolute path to your local .db and be kept private.
+## 🧩 Local Database
+
+- The local SQLite database (e.g. intx.db) should remain local and never be committed.
+- Your profiles.yml (in ~/.dbt/profiles.yml) should reference the absolute path to your local .db and be kept private.
 
 Example path in profiles.yml:
-
+```
 intx_dbt:
   outputs:
     dev:
@@ -76,52 +82,62 @@ intx_dbt:
         main: ~/intx_project/intx.db
       schema_directory: ~/intx_project
   target: dev
+```
+---
 
-
-🧮 Running dbt
+## 🧮 Running dbt
 
 After setup, run these commands inside the intx_dbt folder:
-
+```
 cd intx_dbt
 dbt debug           # confirm connection to local sqlite
 dbt run             # build models
 dbt test            # run schema/tests
 dbt docs generate   # generate docs
 dbt docs serve      # view docs locally
+```
 
+---
 
-🧠 Models Overview (examples)
+## 🧠 Models Overview (examples)
+
 | Layer                    | Model                      | Description                                                     |
 | ------------------------ | -------------------------- | --------------------------------------------------------------- |
 | **Staging**              | `stg_interactions`         | Loads and cleans raw simulated data (from CSV import)           |
 | **Facts / Aggregates**   | `fct_interactions_summary` | Aggregated metrics (counts, averages, date ranges) by category  |
 | **Example**              | `my_first_dbt_model`       | Default dbt example model (safe to delete later)                |
 
+---
 
-🔒 Privacy and De-identification
+## 🔒 Privacy and De-identification
 
 This project uses simulated data only for testing and modeling purposes.
 When integrating real data:
-* Remove all personally identifiable information (PII)
-* Use consistent pseudonymization
-* Store sensitive source data in a private folder outside the Git repository
-* Never push .db, raw data files, or profiles.yml (if it contains real credentials or local paths) to GitHub
+- Remove all personally identifiable information (PII)
+- Use consistent pseudonymization
+- Store sensitive source data in a private folder outside the Git repository
+- Never push .db, raw data files, or profiles.yml (if it contains real credentials or local paths) to GitHub
 
+---
 
-📤 Git & Sharing
-* Push only non-sensitive artifacts: models, docs, simulated data, notebooks, READMEs.
-* The .gitignore ensures private and auto-generated files (like databases and virtual environments) are excluded.
+## 📤 Git & Sharing
 
+- Push only non-sensitive artifacts: models, docs, simulated data, notebooks, READMEs.
+- The .gitignore ensures private and auto-generated files (like databases and virtual environments) are excluded.
 
-🚀 Next Steps
+---
 
-* Add a short technical write-up describing the business problem and approach.
-* Include screenshots or embedded Tableau/Power BI/Streamlit demos (linked, not containing PII).
-* Add a notebooks/ folder with exploratory analysis (Jupyter) using simulated data.
-* Add dbt docs output and a short data model diagram to the repo.
+## 🚀 Next Steps
 
-👩‍💻 Author
+- Add a short technical write-up describing the business problem and approach.
+- Include screenshots or embedded Tableau/Power BI/Streamlit demos (linked, not containing PII).
+- Add a notebooks/ folder with exploratory analysis (Jupyter) using simulated data.
+- Add dbt docs output and a short data model diagram to the repo.
 
-EKW544
-Project: Interactions Evidence Project
-Stack: dbt, SQLite, Miniconda, VS Code
+---
+
+## 👩‍💻 Author
+
+- **Name:** EKW544  
+- **Project:** Interactions Evidence Project  
+- **Stack:** dbt, SQLite, Miniconda, VS Code
