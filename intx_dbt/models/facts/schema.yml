@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: fct_interactions_summary
+    description: "Aggregated summary of interactions by category"
+    columns:
+      - name: category
+        tests:
+          - not_null
+      - name: total_interactions
+        tests:
+          - not_null
+          - unique

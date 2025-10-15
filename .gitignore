@@ -1,0 +1,22 @@
+# Ignore database files
+*.db
+
+# Ignore Python/virtual environment files
+venv/
+dbt_env/
+.env
+__pycache__/
+
+# Ignore dbt local artifacts
+target/
+logs/
+dbt_packages/
+
+# Ignore system files
+.DS_Store
+*.log
+*.tmp
+
+# Ignore sensitive/large data exports or raw files (optional)
+data/private_*
+data/*.secret.csv
