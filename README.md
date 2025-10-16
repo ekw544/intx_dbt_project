@@ -11,6 +11,8 @@ The goal is to understand:
 - How interactions change over time
 - Key factors influencing their patterns
 
+ChatGPT (AI Co-Pilot): Served as a sounding board for project design, tool selection, and problem-solving. Helped structure the project for portfolio readiness while ensuring data privacy and alignment with real-world analytics workflows.
+
 ## Tech Stack
 - **dbt (Core)**
 - **SQLite**
