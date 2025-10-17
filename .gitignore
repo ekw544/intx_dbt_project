@@ -20,3 +20,4 @@ dbt_packages/
 # Ignore sensitive/large data exports or raw files (optional)
 data/private_*
 data/*.secret.csv
+private_data/

@@ -20,7 +20,16 @@ ChatGPT (AI Co-Pilot): Served as a sounding board for project design, tool selec
 - **VS Code**
 
 ## Data
-For privacy reasons, all data in this repository is **simulated**. The real dataset is sensitive and not included.
+For privacy reasons, all data in this repository is **simulated** or **de-identified**. The raw dataset is sensitive and not included.
+
+- **Simulated inputs**: `data/simulated_interactions.csv` (safe, local) 
+
+**Note on Data:** The CSV files included here are fully de-identified and pseudonymized. No real names, locations, or notes are included. They are for demonstration purposes only.
+- **De-identified outputs**:  
+  - `data/interactions_deid.csv` — pseudonymized interactions  
+  - `data/interaction_person.csv` — interaction-person links for reproducible analysis 
+  - `data/persons.csv` — mapping of pseudonyms  
+
 
 
 ---
@@ -31,7 +40,14 @@ For privacy reasons, all data in this repository is **simulated**. The real data
 intx_project/
 │
 ├── data/
-│ └── simulated_interactions.csv # Sample dataset (local only, safe & simulated)
+│ ├── demo_interactions_deid.csv # Pseudonymized interactions
+│ ├── demo_interaction_person.csv # Interaction-person mapping table
+│ ├── demo_persons.csv # Pseudonym mapping table
+│ ├── simulated_interactions.csv # Sample dataset (local only, safe & simulated) 
+│
+├── scripts/
+│ ├── generate_simulated_data.py
+│ ├── deidentify_interactions.py
 │
 ├── intx_dbt/ # dbt project folder
 │ ├── models/
@@ -101,7 +117,14 @@ dbt docs serve      # view docs locally
 
 ---
 
-## 🧠 Models Overview (examples)
+## 🧠 Models / Pipeline Overview
+
+- Raw data is **cleaned and preprocessed**:
+  - Names in `Parties` are cleaned and split
+  - Uncertain names and text inside parentheses are removed
+- Names are then **pseudonymized consistently** across `Parties` and `Proof` columns
+- `Proof` text category words are normalized to canonical forms for consistent aggregation
+- De-identified outputs and mapping tables are generated for safe use in dbt models
 
 | Layer                    | Model                      | Description                                                     |
 | ------------------------ | -------------------------- | --------------------------------------------------------------- |
